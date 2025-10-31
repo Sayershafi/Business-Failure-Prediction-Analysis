@@ -5,7 +5,7 @@
 <p align="center">
   <b>Analyzing U.S. bank failures, business survival trends, and predictive insights (2000–2025)</b>  
   <br>
-  <i>Python | Power BI | Machine Learning | FDIC | BLS | Economic Analytics</i>
+  <i>Python | Pandas | Matplotlib | Seaborn |Power BI </i>
 </p>
 
 ---
@@ -119,7 +119,7 @@ It builds predictive models and visual insights to understand how economic cycle
 <p align="center">
   <img src="https://img.icons8.com/color/96/000000/user-male-circle--v1.png" width="90" alt="Profile Icon"/><br>
   <b>Sayer Bin Shafi</b><br>
-  🎓 MBA in <b>Business Analytics (STEM)</b>, Midwestern State University<br>
+  🎓 MBA in <b>Business Analytics</b>, Midwestern State University<br>
   📍 Texas, USA
 </p>
 
