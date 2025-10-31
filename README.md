@@ -1,74 +1,118 @@
-# 🏦 Business Failure Prediction Analysis (FDIC + BLS Data)
+# generate_readme.py
+# ✅ Creates README.md + copies visuals to /assets (auto-generates placeholders if missing)
+# Author: Sayer Bin Shafi
 
-📅 **Period:** 2000–2024  
-🧠 **Tech Stack:** Python | Power BI | SQL | Pandas | Scikit-learn  
+import os
+import shutil
+import matplotlib.pyplot as plt
+from textwrap import dedent
+
+# ========== CONFIGURATION ==========
+PROJECT_TITLE = "🏦 Business Failure Prediction using FDIC & BLS Data"
+PERIOD = "2000–2024"
+ASSETS_DIR = "assets"
+README_NAME = "README.md"
+
+BADGES = [
+    '<img src="https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white"/>',
+    '<img src="https://img.shields.io/badge/Power%20BI-Dashboard-yellow?logo=powerbi"/>',
+    '<img src="https://img.shields.io/badge/Scikit--Learn-ML-orange?logo=scikit-learn"/>',
+    '<img src="https://img.shields.io/badge/Status-Completed-brightgreen"/>'
+]
+
+IMAGES = {
+    "failures_over_time": "output_13_0.png",
+    "top_states": "output_15_0.png",
+    "survival_curves": "output_19_0.png",
+    "correlation": "output_21_0.png",
+    "what_if": "output_25_0.png",
+    "regression": "output_29_0.png"
+}
+
+POWER_BI_URL = "https://github.com/user-attachments/assets/278c99a8-0ba3-4ffd-a379-47a1124e9bae"
+
+# ========== FUNCTIONS ==========
+
+def ensure_assets():
+    """Create /assets directory and copy or create placeholder visuals."""
+    os.makedirs(ASSETS_DIR, exist_ok=True)
+
+    for label, file_name in IMAGES.items():
+        src = os.path.join(os.getcwd(), file_name)
+        dst = os.path.join(ASSETS_DIR, file_name)
+
+        if os.path.exists(src):
+            shutil.copy2(src, dst)
+        else:
+            # create placeholder
+            plt.figure(figsize=(6, 3))
+            plt.plot(range(1, 6), [i * 1.5 for i in range(1, 6)], marker="o")
+            plt.title(f"Placeholder for {label.replace('_', ' ').title()}")
+            plt.tight_layout()
+            plt.savefig(dst)
+            plt.close()
+
+
+def make_img_block():
+    """Generate markdown blocks for visuals."""
+    titles = {
+        "failures_over_time": "🏦 Bank Failures Over Time",
+        "top_states": "🌍 Top 10 States by Failures",
+        "survival_curves": "📉 Business Survival Curves by Cohort",
+        "correlation": "🔍 Correlation: Bank Failures vs Survival Rates",
+        "what_if": "📈 What-if Scenario: Survival Rate Improvement",
+        "regression": "📊 Regression & Employment Insights"
+    }
+
+    blocks = []
+    for key, title in titles.items():
+        path = f"{ASSETS_DIR}/{IMAGES[key]}"
+        block = f"### {title}\n<img src='{path}' width='90%' alt='{title}'/>\n"
+        blocks.append(block)
+    return "\n---\n\n".join(blocks)
+
+
+def create_readme():
+    """Build the README markdown content."""
+    badges = "\n  ".join(BADGES)
+    visuals = make_img_block()
+
+    readme_content = f"""
+<h1 align="center">{PROJECT_TITLE}</h1>
+
+<p align="center">
+  {badges}
+</p>
+
+<p align="center">
+  <b>Analyzing two decades of U.S. business and bank failures using data science & machine learning.</b><br>
+  <i>Integrating FDIC + BLS datasets to uncover trends, correlations, and predictive signals of economic distress.</i><br>
+  <i>📅 {PERIOD}</i>
+</p>
 
 ---
 
-## 🎯 Objective
-This project analyzes patterns and predicts business failures in the U.S. using **FDIC Failed Bank data** and **BLS Business Employment Dynamics (Business Survival Rates)**.  
-The goal is to support data-driven insights for regulators, investors, and policymakers to mitigate financial risks and enhance economic resilience.
+## 🌐 Project Overview
+This project builds an AI-driven framework to analyze and predict **U.S. business failures** ({PERIOD}).  
+By merging **FDIC bank failure data** and **BLS business survival data**, the study identifies early indicators of financial distress to support **regulators**, **policy-makers**, and **investors**.
 
 ---
 
-## 📊 Datasets Used
-- **[FDIC Failed Bank List](https://www.fdic.gov/resources/resolutions/bank-failures/failed-bank-list/)**  
-  Contains historical bank closure data, including location, acquisition details, and failure causes.
-- **[BLS Business Employment Dynamics – Business Survival Rates](https://www.bls.gov/bdm/bdmage.htm)**  
-  Tracks establishment openings, closures, and survival percentages by year and sector.
+## 📊 Datasets
+
+| Source | Description | Key Features |
+|:--|:--|:--|
+| 🏛️ [FDIC Failed Bank List](https://www.fdic.gov/resources/resolutions/bank-failures/failed-bank-list/) | Records of U.S. bank closures and acquisitions | Bank name, state, closing date, acquirer |
+| 📈 [BLS Business Dynamics](https://www.bls.gov/bdm/bdmage.htm) | Establishment openings, closures & survival rates | Cohort year, survival %, employment size |
 
 ---
 
-## 🧩 Methodology
-1. **Data Preparation** – Cleaned and merged FDIC and BLS datasets.  
-2. **Exploratory Data Analysis** – Identified trends in bank failures and business survival rates.  
-3. **Predictive Modeling** – Applied Logistic Regression, Random Forest, and XGBoost for failure prediction.  
-4. **Visualization** – Designed a Power BI dashboard highlighting state-wise failures, trends, and survival patterns.
+## ⚙️ Workflow
 
----
-
-## 💡 Key Insights
-- Businesses in finance, manufacturing, and retail sectors show distinct survival curves.  
-- Strong correlation between macroeconomic factors and industry failure rates.  
-- Predictive accuracy of **91%** achieved using XGBoost classifier.  
-- Power BI visuals reveal recovery clusters and geographic concentration of failed institutions.  
-
----
-
-## 📈 Dashboard Preview
-
-<div align="center">
-
-### 📊 Overview of Business Failure Dashboard  
-<img width="100%" alt="dashboard_overview" src="https://github.com/user-attachments/assets/278c99a8-0ba3-4ffd-a379-47a1124e9bae" />
-
-*Figure 1: U.S. bank failure trends and survival patterns across states.*
-
----
-
-### 🏦 Top States by Bank Failures and Cumulative Trends  
-<img width="100%" alt="bank_failures_trends" src="https://github.com/user-attachments/assets/d987cad6-ca9d-459d-80c4-93e6ec7eddfc" />
-
-*Figure 2: Georgia, Florida, and Illinois recorded the highest cumulative bank failures during the 2008–2012 period.*
-
-</div>
-
----
-
-## 🏁 Outcome
-Developed a reliable **AI-driven business failure prediction framework** integrating government datasets.  
-Supports U.S. regulators, investors, and policymakers in identifying high-risk sectors early and reinforcing financial stability.
-
----
-
-## 👨‍💻 Author
-**Dipon Das Rahul**  
-🎓 MBA in Business Analytics (STEM), Midwestern State University  
-📍 Texas, USA  
-📧 [dipondasrahul@gmail.com](mailto:dipondasrahul@gmail.com)  
-🔗 [LinkedIn](https://www.linkedin.com/in/diponrahul) | [GitHub](https://github.com/dipondasrahul-blip)
-
----
-
-## 🧾 Tags
-`#AI` `#MachineLearning` `#FinancialRisk` `#BusinessFailure` `#FDIC` `#BLS` `#Python` `#PowerBI`
+```mermaid
+graph TD
+A[Data Collection<br>FDIC + BLS] --> B[Data Cleaning<br>Standardize & Merge]
+B --> C[Exploratory Data Analysis<br>Trends + State-level Insights]
+C --> D[Predictive Modeling<br>Logistic, RF, XGBoost]
+D --> E[Visualization<br>Power BI Dashboard + Python Plots]
+E --> F[Key Insights<br>Business Risk Detection]
