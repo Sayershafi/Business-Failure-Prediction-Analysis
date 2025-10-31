@@ -1,5 +1,5 @@
 <h1 align="center">
-  🏦 Business Failure & Survival Prediction
+  🏦 Business Failure Prediction Analysis
 </h1>
 
 <p align="center">
@@ -114,19 +114,34 @@ It builds predictive models and visual insights to understand how economic cycle
 
 ---
 
-## 👨‍💻 Author
-**Sayer Bin Shafi**  
-🎓 MBA in Business Analytics (STEM) | Midwestern State University  
-📍 Texas, USA  
-🔗 [LinkedIn](https://linkedin.com/in/sayershafi) | 🌐 [Website](https://sayerbin.com) | 💬 [WhatsApp](https://wa.me/19403864534) | 💻 [GitHub](https://github.com/Sayershafi)
+<h2 align="center">👨‍💻 Author</h2>
+
+<p align="center">
+  <img src="https://img.icons8.com/color/96/000000/user-male-circle--v1.png" width="90" alt="Profile Icon"/><br>
+  <b>Sayer Bin Shafi</b><br>
+  🎓 MBA in <b>Business Analytics (STEM)</b>, Midwestern State University<br>
+  📍 Texas, USA
+</p>
+
+<p align="center">
+  <a href="mailto:sayerbinshafi@gmail.com">
+    <img src="https://img.icons8.com/color/48/000000/gmail.png" width="26"/> 
+  </a>&nbsp;
+  <a href="https://sayerbin.com" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/domain.png" width="26"/>
+  </a>&nbsp;
+  <a href="https://www.linkedin.com/in/sayershafi" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/linkedin.png" width="26"/>
+  </a>&nbsp;
+  <a href="https://github.com/Sayershafi" target="_blank">
+    <img src="https://img.icons8.com/material-outlined/48/000000/github.png" width="26"/>
+  </a>
+</p>
+
 
 ---
 
 ## 🏷️ Tags
 `#BusinessFailure` `#MachineLearning` `#DataAnalytics` `#FDIC` `#BLS` `#EconomicInsights` `#Python` `#PowerBI`
 
----
 
-## 📘 Reference
-- [FDIC Failed Bank List](https://www.fdic.gov/resources/resolutions/bank-failures/failed-bank-list/)  
-- [BLS Business Employment Dynamics](https://www.bls.gov/bdm/bdmage.htm)
